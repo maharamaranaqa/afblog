@@ -1,4 +1,4 @@
-import { getPostData, getSortedPostsData } from '@/lib/posts';
+import { getPostData, getSortedPostsData, getRelatedPosts } from '@/lib/posts';
 import styles from './page.module.css';
 import { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
@@ -7,6 +7,7 @@ import TableOfContents from '@/components/TableOfContents/TableOfContents';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure/AffiliateDisclosure';
 import InlineCTA from '@/components/InlineCTA/InlineCTA';
 import AdBanner from '@/components/AdBanner/AdBanner';
+import RelatedPosts from '@/components/RelatedPosts/RelatedPosts';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -44,6 +45,7 @@ const components = {
 export default async function Post({ params }: Props) {
     const { slug } = await params;
     const postData = getPostData(slug);
+    const relatedPosts = getRelatedPosts(slug, postData.tags);
 
     return (
         <div className={styles.container}>
@@ -76,6 +78,7 @@ export default async function Post({ params }: Props) {
                         </div>
                     </div>
                     <AdBanner slot="footer" />
+                    <RelatedPosts posts={relatedPosts} />
                 </div>
             </main>
 
