@@ -1,0 +1,19 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-2xl) var(--spacing-md);
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: var(--spacing-xs);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}

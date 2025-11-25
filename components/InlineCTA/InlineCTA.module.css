@@ -1,0 +1,30 @@
+.link {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.link:hover {
+    color: var(--color-accent-hover);
+    text-decoration-color: transparent;
+    background-color: rgba(180, 83, 9, 0.1);
+    /* Accent color with opacity */
+    border-radius: 4px;
+    padding: 0 4px;
+    margin: 0 -4px;
+}
+
+.icon {
+    font-size: 0.8em;
+    transition: transform 0.2s;
+}
+
+.link:hover .icon {
+    transform: translateX(2px);
+}
