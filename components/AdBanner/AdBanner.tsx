@@ -9,7 +9,7 @@ interface AdBannerProps {
 
 type AdDefinition = {
     id: string;
-    content: JSX.Element;
+    content: React.ReactNode;
     slots: ('sidebar' | 'footer')[];
 };
 
