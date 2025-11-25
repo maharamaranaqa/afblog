@@ -6,6 +6,7 @@ import ProductCard from '@/components/ProductCard/ProductCard';
 import TableOfContents from '@/components/TableOfContents/TableOfContents';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure/AffiliateDisclosure';
 import InlineCTA from '@/components/InlineCTA/InlineCTA';
+import AdBanner from '@/components/AdBanner/AdBanner';
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -74,10 +75,12 @@ export default async function Post({ params }: Props) {
                             <p>Tech enthusiast and audiophile. Dedicated to finding the best products for your lifestyle.</p>
                         </div>
                     </div>
+                    <AdBanner slot="footer" />
                 </div>
             </main>
 
             <aside>
+                <AdBanner slot="sidebar" />
                 <TableOfContents />
             </aside>
         </div>

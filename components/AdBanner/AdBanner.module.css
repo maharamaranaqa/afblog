@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--surface-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar {
+    margin: 0 0 2rem 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.footer {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+}
+
+.label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
