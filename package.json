@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "automation:discover": "node scripts/discover_products.js",
+    "automation:draft": "node scripts/generate_draft.js"
   },
   "dependencies": {
     "@next/mdx": "^16.0.4",
