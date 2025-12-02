@@ -3,10 +3,12 @@ import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
     title: string;
-    description: string;
+    description?: string;
     price: string;
-    imageUrl: string;
-    affiliateLink: string;
+    imageUrl?: string;
+    image?: string; // Alias for imageUrl
+    affiliateLink?: string;
+    url?: string; // Alias for affiliateLink
     rating?: number;
     pros?: string[];
     cons?: string[];
@@ -14,19 +16,24 @@ interface ProductCardProps {
 
 export default function ProductCard({
     title,
-    description,
+    description = '',
     price,
     imageUrl,
+    image,
     affiliateLink,
+    url,
     rating = 5,
     pros = [],
     cons = [],
 }: ProductCardProps) {
+    const finalImageUrl = imageUrl || image || 'https://placehold.co/600x400?text=No+Image';
+    const finalLink = affiliateLink || url || '#';
+
     return (
         <div className={styles.card}>
             <div className={styles.imageContainer}>
                 <Image
-                    src={imageUrl}
+                    src={finalImageUrl}
                     alt={title}
                     fill
                     className={styles.image}
@@ -69,7 +76,7 @@ export default function ProductCard({
 
                 <div className={styles.footer}>
                     <span className={styles.price}>{price}</span>
-                    <a href={affiliateLink} target="_blank" rel="noopener noreferrer" className={styles.button}>
+                    <a href={finalLink} target="_blank" rel="noopener noreferrer" className={styles.button}>
                         Check Price
                     </a>
                 </div>

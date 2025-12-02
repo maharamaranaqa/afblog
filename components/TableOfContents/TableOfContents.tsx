@@ -9,15 +9,31 @@ export default function TableOfContents() {
     useEffect(() => {
         requestAnimationFrame(() => {
             const elements = Array.from(document.querySelectorAll('h2, h3'));
-            const headingData = elements.map((elem) => ({
-                id: elem.id || elem.textContent?.toLowerCase().replace(/\s+/g, '-') || '',
-                text: elem.textContent || '',
-                level: Number(elem.tagName.charAt(1)),
-            }));
+            const idCounts: { [key: string]: number } = {};
 
-            // Add IDs to elements if missing
+            const headingData = elements.map((elem) => {
+                let baseId = elem.id || elem.textContent?.toLowerCase().replace(/\s+/g, '-') || 'heading';
+                // Remove existing numbers if they look like auto-generated ones to avoid double suffixing
+                baseId = baseId.replace(/-\d+$/, '');
+
+                let id = baseId;
+                if (idCounts[baseId]) {
+                    id = `${baseId}-${idCounts[baseId]}`;
+                    idCounts[baseId]++;
+                } else {
+                    idCounts[baseId] = 1;
+                }
+
+                return {
+                    id,
+                    text: elem.textContent || '',
+                    level: Number(elem.tagName.charAt(1)),
+                };
+            });
+
+            // Add IDs to elements if missing or update if duplicate
             elements.forEach((elem, index) => {
-                if (!elem.id) {
+                if (!elem.id || elem.id !== headingData[index].id) {
                     elem.id = headingData[index].id;
                 }
             });
@@ -26,7 +42,7 @@ export default function TableOfContents() {
         });
     }, []);
 
-    if (headings.length === 0) return null;
+    if (!headings || !Array.isArray(headings) || headings.length === 0) return null;
 
     return (
         <nav className={styles.toc}>
