@@ -19,6 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://looper-flipper.com"),
   title: "AFBlog - Premium Affiliate Insights",
   description: "Discover the best products and insights for your lifestyle.",
 };
