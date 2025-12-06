@@ -3,7 +3,7 @@ import { getSortedPostsData } from '@/lib/posts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const posts = getSortedPostsData();
-    const baseUrl = 'https://looper-flipper.com'; // TODO: Replace with your actual domain
+    const baseUrl = 'https://www.looper-flipper.com'; // TODO: Replace with your actual domain
 
     const postUrls = posts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
